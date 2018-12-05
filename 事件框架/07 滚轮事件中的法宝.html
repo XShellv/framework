@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style type="text/css">
+    *{margin: 0; padding: 0;}
+    #show{width: 600px; height: 400px; display: block; margin: 100px auto 0;}
+    div{position: absolute; width: 120px; top: 150px; right: 50px;}
+    div img{width: 100px; margin-left: 10px;}
+    .choose{width: 120px; margin-left: 0;}
+</style>
+<body id='body'>
+<img id="show" src="img/1.jpg">
+<div id="container">
+    <img src="img/1.jpg" alt="" class="choose">
+    <img src="img/2.jpg" alt="">
+    <img src="img/3.jpg" alt="">
+    <img src="img/4.jpg" alt="">
+</div>
+</body>
+<script src="tryFrame.js"></script>
+<script>
+    //event的兼容性封装
+    function getEvent(event) {
+        return event ? event : window.event;
+    }
+    //获取目标元素封装
+    function getTarget(event) {
+        var event = getEvent(event);
+        return event.target ? event.target : event.srcElement;
+    }
+    //鼠标滚轮事件封装
+    function getDetail(event) {
+        var event = getEvent(event);
+        if(event.wheelDelta){
+            return event.wheelDelta;
+        }
+        else{
+            return -event.detail*40; //fireFOX与其他浏览器相反滚动
+        }
+    }
+    //阻止冒泡封装
+    function stopPropogation(event) {
+        var event = getEvent(event);
+        if(event.stopPropagation){
+            return event.stopPropagation();
+        }
+        else{
+            return event.cancelBubble = true;
+        }
+    }
+    //阻止默认行为
+    function preventDefault() {
+        var event = getEvent(event);
+        if(event.preventDefault){
+            return event.preventDefault();
+        }
+        else{
+            event.returnValue = false;
+        }
+    }
+    $$.on("mousewheel","body",change);
+    $$.on("DOMMouseScroll","body",change);
+
+    var num = 0;
+    var imgs = document.getElementById("container").children;
+    var show = document.getElementById("show");
+    function change(event) {
+        var result = getDetail(event)/120;
+        num = (num - result) % 4; //0 1 2 3
+        if(num<0){
+            num = 4 + num;
+        }
+        for(var i = 0;i<imgs.length;i++){
+            imgs[i].className = "";
+        }
+        imgs[num].className = "choose";
+        show.src = "img/"+(num+1)+".jpg";
+    }
+</script>

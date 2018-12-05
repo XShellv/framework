@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style type="text/css">
+    *{margin : 0; padding: 0;}
+    #move{float: left; width: 300px; height: 200px; overflow: hidden; position: relative;}
+    #shadow{height: 40px; width: 60px; position: absolute; top: 0; left: 0; background: rgba(200, 200, 200, 0.5); cursor: pointer;}
+    .container{width: 600px; height: 400px; float: left; overflow: hidden; position: relative;}
+    #big{position: absolute; top: 0; left: 0;}
+</style>
+<body>
+<div id="move">
+    <img id="small" width="300" height="200" src="img/mouse.jpg">
+    <div id="shadow"></div>
+</div>
+<div class="container">
+    <img id="big" width="3000" height="2000" src="img/mouse.jpg">
+</div>
+</body>
+</html>
+<script src='jquery-1.11.2.min.js'></script>
+<script>
+    $(function () {
+        $("#shadow").mousedown(function (event) {
+            var that = this;
+            var e = event || window.event;
+            var gapX = e.clientX - this.offsetLeft;
+            var gapY = e.clientY - this.offsetTop;
+            document.onmousemove = function (event) {
+                var event = event || window.event;
+                var x = event.clientX - gapX;
+                var y = event.clientY - gapY;
+                if(x<0){x = 0}
+                if(x>240){x = 240}
+                if(y<0){y = 0}
+                if(y>160){y = 160}
+                window.getSelection ?window.getSelection().removeAllRanges() : document.selection.empty();
+                picturemove(x,y,that);
+            }
+        });
+
+        function picturemove(x,y,that) {
+            //shadow移动
+            $(that).css({
+                left : x +"px",
+                top: y + "px"
+            });
+            //big移动
+            $("#big").css({
+                left : -(x * 10) +"px",
+                top: -(y*10) + "px"
+            })
+        }
+
+        $(document).mouseup(function () {
+            document.onmousemove = null;
+        });
+    });
+
+</script>

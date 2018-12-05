@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        div{
+            width: 100px;
+            height: 100px;
+            background-color: #000;
+        }
+    </style>
+    <script src="tryFrameAgain.js"></script>
+</head>
+<body>
+    <div id="test"></div>
+</body>
+</html>
+<script>
+//    var test = document.getElementById("test");
+//        event.mouseover("test",function () {
+//            this.style.background = "purple";
+//        })
+//        event.mouseout("test",function () {
+//            this.style.background = "pink";
+//        })
+//        event.hover("test",function () {
+//            this.style.background = "purple";
+//        },function () {
+//            this.style.background = "red";
+//        })
+            $$.mouseover("test",function () {
+                this.style.background = "purple";
+            })
+            $$.mouseout("test",function () {
+                this.style.background = "pink";
+            })
+            $$.hover("test",function () {
+                this.style.background = "purple";
+            },function () {
+                this.style.background = "red";
+            })
+</script>

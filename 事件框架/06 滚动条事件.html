@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>无标题文档</title>
+    <style type="text/css">
+        div{position: absolute; right: 100px; top: 300px; padding: 10px; border: 1px solid red; background: pink; font-size: 18px; color: white; font-weight: bold; line-height: 20px; cursor: pointer;}
+        body{height: 1000px;}
+    </style>
+    <script src='jquery-1.11.2.min.js'></script>
+    <script src="tryFrame.js"></script>
+</head>
+
+<body id='body'>
+<div id="back">返回<br>顶部</div>
+</body>
+</html>
+<script>
+    //滚动事件
+    $$.on("scroll",window,function () {
+        var top = document.documentElement.scrollTop || document.body.scrollTop||window.pageYOffset ||0;
+        $("#back").css("top",top+300);
+
+    })
+    $$.on("click","back",function () {
+        window.scrollTo(0,0);
+    })
+</script>

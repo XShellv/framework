@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            width: 2000px;
+            height: 2000px;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box1{
+            position: relative;
+            width: 500px;
+            height: 500px;
+            border:50px solid #000;
+            margin: 100px auto;
+        }
+        #box2{
+            position: absolute;
+            left: 50px;
+            top: 50px;
+            width: 300px;
+            height: 300px;
+            border:50px solid red;
+        }
+        #box3{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            left: 20px;
+            top: 20px;
+            border:50px solid blue;
+        }
+    </style>
+</head>
+<body>
+<div id="box1">box1
+    <div id="box2">box2
+        <div id="box3">box3</div>
+    </div>
+</div>
+</body>
+</html>
+<script src="tryFrame.js"></script>
+<script>
+    //获取offsetLeft和offsetTop
+    function offset(id) {
+        var dom = $$.$id(id);
+        return {left:dom.offsetLeft,top:dom.offsetTop}
+    }
+    console.log("box1:",offset("box1").left,offset("box1").top)
+    console.log("box2:",offset("box2").left,offset("box2").top)
+    console.log("box3:",offset("box3").left,offset("box3").top)
+    //获取absolute
+    function absolute(id) {
+        var dom = $$.$id(id);
+        var left = offset(id).left;
+        var top = offset(id).top;
+        var parent = dom.offsetParent;
+        while(parent != null){
+            left+=parent.offsetLeft;
+            top+=parent.offsetTop;
+            parent = parent.offsetParent;
+        }
+        return {left:left,top:top}
+    }
+    console.log(absolute("box3").left,absolute("box3").top)
+</script>

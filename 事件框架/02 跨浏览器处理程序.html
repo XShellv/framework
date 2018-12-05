@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <button id="btn">点击</button>
+</body>
+</html>
+<script>
+    var EventUtil = {
+        //绑定事件
+        addHander : function (type,element,handle) {
+            if(element.addEventListener){
+                element.addEventListener(type,handle,false);
+            }
+            else if(element.attachEvent){
+                element.attachEvent("on"+type,handle);
+            }
+            else{
+                element["on"+type] = handle;
+            }
+        },
+        //移除事件
+        removeHander:function (type,element,handle){
+            if(element.removeEventListener){
+                element.removeEventListener(type,handle,false);
+            }
+            else if(element.detachEvent){
+                element.detachEvent("on"+type,handle);
+            }
+            else{
+                element["on"+type] = null;
+            }
+        }
+    };
+
+    EventUtil.addHander("click",btn,fun1);
+    EventUtil.addHander("click",btn,fun2);
+    EventUtil.removeHander("click",btn,fun2);
+    function fun1() {
+        alert("clicked1");
+    }
+    function fun2() {
+        alert("clicked2");
+    }
+</script>

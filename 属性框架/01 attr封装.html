@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<style type="text/css">
+    *{padding: 10px;}
+    div{
+        color:red;
+        font-size:50px;
+    }
+    .div{
+        color:blue;
+        font-size:50px;
+    }
+</style>
+<body>
+<div class="container">传智播客</div>
+<div class="container">传智播客</div>
+<div class="container">传智播客</div>
+<div class="container">传智播客</div>
+<div class="container">传智播客</div>
+<button id="mybtn">按钮</button>
+</body>
+</html>
+<script src='tryFrame.js'></script>
+<script type="text/javascript">
+    console.log($$.css('.container','font-size'));
+
+    $$.$id('mybtn').onclick = function(){
+        $$.$attr('.container','name','hello');
+        $$.$attr('.container','class','div');
+    };
+//    alert($$.$attr('.container','class'));
+//    function attr(selector, key, value) {
+//        //sel 可能是一个对象，也可能是一个数组
+//        var sel = $$.isString(selector) ? $$.$all(selector) : selector;
+//        if(sel.length){
+//            if(value){
+//                for(var i = 0;i<sel.length;i++){
+//                    setAttr(sel[i],key,value)
+//                }
+//            }
+//            else{ //这么多对象，我只要第一个的
+//                return getAttr(sel[0],key);
+//            }
+//        }
+//        else{
+//            if(value){
+//                setAttr(sel,key,value)
+//            }
+//            else{
+//                return getAttr(sel,key);
+//            }
+//        }
+//        //设置属性
+//        function setAttr(sel,key,value) {
+////            console.log(sel,key,value)
+//            sel.setAttribute(key,value);
+//        }
+//        //获取属性
+//        function getAttr(sel,key) {
+//           return sel.getAttribute(key);
+//        }
+//    }
+</script>
+

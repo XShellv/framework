@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="hah">
+        <span>hah</span>
+        <span>hah</span>
+        <span>hah</span>
+    </div>
+    <div id="div">
+        <span>123</span>
+        <span>123</span>
+        <span>123</span>
+    </div>
+</body>
+</html>
+<script src="tryFrame.js"></script>
+<script>
+    //先找id后找tag
+    function $tag(context,tag) {
+        if(typeof context === "string"){
+            context = $$.$id(context);
+        }
+        if(context){
+           return context.getElementsByTagName(tag);
+        }
+        return document.getElementsByTagName(tag);
+    }
+    alert($tag("div","span").length);
+</script>

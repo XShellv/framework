@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="div1">asdahfahfjafha</div>
+    <div id="div2">
+        <span>dadadad</span>
+            <div id="div3">
+                <span>haha</span>
+                <span>haha</span>
+                <span>haha</span>
+                <span>haha</span>
+            </div>
+        <span>adhajda</span>
+    </div>
+</body>
+</html>
+<script src="tryFrame.js"></script>
+<script>
+    var re = $$.$tag("div3","span");
+    for(var i = 0;i<re.length;i++){
+        re[i].style["color"] = "red";
+    }
+</script>

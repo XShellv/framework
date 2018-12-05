@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p id='pi'></p>
+<div id='div1'  style="position:absolute;
+  left:50px;
+  top:10px;
+  z-index:1000;
+  padding:0px;
+  background-color:#FFFFCC;
+  color:#201000;
+  font-size:12px;
+  border:1px   solid   #284860;"></div>
+</body>
+</html>
+<script src = jquery-1.11.2.min.js></script>
+<script>
+    $(function () {
+        //mousePositon的封装
+        var mousePosition =  function (event){
+            if(event.pageX || event.pageY){
+                return {
+                    x:event.pageX,
+                    y:event.pageY
+                };
+            }
+            return {
+                x:document.body.scrollLeft + event.clientX - document.body.clientLeft,
+                y:document.body.scrollTop + event.clientY - document.body.clientTop
+            }
+
+
+        };
+        var mousemove = function (event) {
+            var event = event ? event : window.event;//event兼容性考虑
+            var x = mousePosition(event).x;
+            var y = mousePosition(event).y;
+            $("#div1").html(x+":"+y).css({
+                left:x+10,
+                top:y+50
+            })
+        };
+        document.onmousemove = mousemove;
+    })
+</script>

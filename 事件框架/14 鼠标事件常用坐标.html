@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+</head>
+
+<body style="width: 2000px;height: 1000px;">
+
+<div id="coords" style="width:500px;height:200px;background:#F2F1D7;border:2px solid #336699;position: absolute;left: 500px;top: 500px;">
+    请在这里移动鼠标。
+</div>
+<div id="coord" style="width:500px;border:2px solid #336699;position: absolute;left: 500px;top: 800px;"> </div>
+
+</body>
+</html>
+<script src="jquery-1.11.2.min.js"></script>
+<script>
+    var loadEvent = function(fn) {
+        console.log(fn);
+        var oldonload = window.onload;
+        if (typeof oldonload != 'function') {
+            window.onload = function () {
+                mousemove();
+            };
+        }
+        else {
+            window.onload = function() {
+                oldonload();
+                fn();
+            }
+        }
+    };
+    var mousemove = function() {
+        $("#coords").mousemove(function (event) {
+            var x = event.pageX || (event.clientX + (document.documentElement.scrollLeft || document.body.scrollLeft));
+            var y = event.pageY || (event.clientY + (document.documentElement.scrollTop || document.body.scrollTop));
+            $("#coord").html("X,Y=("+x+", "+y+")");
+        });
+
+    };
+
+    loadEvent(function () {
+        mousemove();
+    });
+</script>

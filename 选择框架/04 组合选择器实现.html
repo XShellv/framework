@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>无标题文档</title>
+    <style type="text/css">
+        *{height: 50px; padding: 10px; margin: 10px;}
+        body{padding: 0;}
+    </style>
+</head>
+
+<body>
+<h3>h3</h3>
+<div  class='moshou'>魔兽世界</div>
+
+<div class="hero">英雄联盟</div>
+
+<span id="dream">梦幻西游</span>
+</body>
+</html>
+<script src='tryFrame.js'></script>
+<script>
+    //    为什么只有一个被选中
+    var dom = $$.$group('  .moshou ,.hero ,#dream,    h3');
+//    function $group(str){
+//        var Arr = [];
+//        var arr = str.split(",");
+//        for(var i = 0;i<arr.length;i++){
+//            var first = arr[i].charAt(0);
+//            //class属性
+//            if(first == "."){
+//                var index = arr[i].indexOf(".");
+//                //返回的是符合条件对象的数组,需要将其遍历
+//                var classObj = $$.$class(arr[i].slice(index+1));
+//                pushArray(classObj);
+//            }
+//            //id属性
+//            else if(first === "#"){
+//                var index = arr[i].indexOf("#");
+//                //返回的是一个对象,可以直接将他包装成数组
+//                var idObj= [$$.$id(arr[i].slice(index+1))];
+//                pushArray(idObj);
+//            }
+//            //剩余的就是tag了
+//            else{
+//                var tagObj = $$.$tag(arr[i]);
+//                pushArray(tagObj);
+//            }
+//        }
+//        return Arr;
+//        //公众部分封装
+//        function pushArray(obj) {
+//            for(var j = 0;j<obj.length;j++){
+//                Arr.push(obj[j])
+//            }
+//        }
+//    }
+
+    for(var i = 0;i<dom.length;i++){
+        dom[i].style["border"] = "1px solid red"
+    }
+</script>

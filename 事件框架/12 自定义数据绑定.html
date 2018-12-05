@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <span id="span"></span>
+</body>
+</html>
+<script src="tryFrame.js"></script>
+<script>
+    var str = " 12 345  ";
+    console.log($$.ltrim(str).length);
+    console.log($$.rtrim(str).length);
+    console.log($$.trim(str).length);
+    var arr = [1,2];
+    var obj = {name:"xxw"};
+    console.log($$.isObj(obj));
+    console.log($$.isArray(arr));
+
+
+
+    function formateString(str, data){
+        return str.replace(/@\((\w+)\)/g, function(match, key){
+            console.log(match,typeof(data[key]));//@(name)    name
+            return typeof data[key] === "undefined" ? '' : data[key]
+        });
+    }
+
+    function Login(){
+        var user={name:'博主'};
+        var span = document.getElementById("span");
+        span.innerHTML = formateString("欢迎@(name)来到百度世界",user)
+    };
+    Login()
+</script>
+

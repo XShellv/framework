@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="div">
+    <span class="span">兄弟01</span>
+    <span class="span">兄弟02</span>
+    <span>兄弟03</span>
+    <span>兄弟04</span>
+    <span class="span">兄弟05</span>
+</div>
+<div>
+    <span class="span">兄弟01</span>
+    <span class="span">兄弟02</span>
+    <span>兄弟03</span>
+    <span>兄弟04</span>
+    <span class="span">兄弟05</span>
+</div>
+</body>
+</html>
+<script src="tryFrame.js"></script>
+<script>
+    //缩小范围，先找id，再找class
+//
+//    function getId (id) {
+//        var dom;
+//        if($$.isString(id)){
+//            dom = $$.$id(id);
+//        }
+//        else if(id){
+//            dom = id;
+//        }
+//        else{
+//            dom = document;
+//        }
+//        return dom;
+//    }
+//
+//    function getClass(id,classname) {
+//        var elements = new Array();
+//        var dom = getId(id);
+//        if(document.getElementsByClassName){
+//            return dom.getElementsByClassName(classname);
+//        }
+//        else{
+//            var all = dom.getElementsByTagName("*");
+//            for(var i = 0; i< all.length;i++){
+//                if(all[i].className && all[i].className == classname){
+//                    elements.push(all[i]);
+//                }
+//            }
+//            return elements;
+//        }
+//    }
+    var re = $$.$class("span");
+    for (var i = 0; i< re.length;i++){
+        re[i].style["background"] = "pink"
+    }
+
+</script>
